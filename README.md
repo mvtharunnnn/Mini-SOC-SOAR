@@ -1,6 +1,6 @@
 # Mini SOC-SOAR
 
-**Automated Phishing Incident Response** â€” a small, local demonstration of how a security alert can move from SIEM-style detection through a SOAR-style investigation and simulated response into an incident record.
+**Automated Phishing Incident Response** — a small, local demonstration of how a security alert can move from SIEM-style detection through a SOAR-style investigation and simulated response into an incident record.
 
 > Firewall blocking, email quarantine and SOC notification are simulated actions for demonstration purposes and do not modify real systems.
 
@@ -29,21 +29,21 @@ The dashboard loads three sample alerts from `alerts.json` and two simple detect
 
 ```text
 Security Alert
-      â†“
+      ↓
 SIEM Detection Rule
-      â†“
+      ↓
 SOAR Playbook
-      â†“
+      ↓
 IOC Extraction
-      â†“
+      ↓
 Local Threat Intelligence
-      â†“
+      ↓
 Risk Scoring
-      â†“
+      ↓
 Simulated Response
-      â†“
+      ↓
 JSON Incident Creation
-      â†“
+      ↓
 SOC Dashboard
 ```
 
@@ -53,7 +53,7 @@ SOC Dashboard
 2. `extract_iocs()` reads the URL hostname, sender domain, and source IP.
 3. `check_ioc()` looks each value up in the in-memory local dictionary in `threat_intel.py`. There are no threat-intelligence API calls.
 4. `calculate_risk()` adds 20 points for a phishing alert and 40 for each malicious IOC, with a maximum score of 100.
-5. A score of 80â€“100 is **CRITICAL**. Critical results simulate domain and IP blocking when the relevant IOC is malicious, plus email quarantine and SOC notification. Lower scores are escalated to an analyst.
+5. A score of 80–100 is **CRITICAL**. Critical results simulate domain and IP blocking when the relevant IOC is malicious, plus email quarantine and SOC notification. Lower scores are escalated to an analyst.
 6. `database.py` assigns an incident ID and writes the incident and its actions to `incidents.json`.
 7. The dashboard displays the run trace, IOC results, risk, incident list, and selected incident details.
 
@@ -67,10 +67,10 @@ SOC Dashboard
 
 | Score | Severity |
 | ---: | --- |
-| 0â€“29 | LOW |
-| 30â€“59 | MEDIUM |
-| 60â€“79 | HIGH |
-| 80â€“100 | CRITICAL |
+| 0–29 | LOW |
+| 30–59 | MEDIUM |
+| 60–79 | HIGH |
+| 80–100 | CRITICAL |
 
 The sample phishing alert scores `20 + 40 + 40 = 100`, or **CRITICAL**.
 
@@ -103,7 +103,7 @@ The app's sample alerts, threat intelligence, and incident workflow use local fi
 
 ## Two-minute interview walkthrough
 
-> â€œI built Mini SOC-SOAR to demonstrate a small end-to-end phishing response workflow. The app loads sample alerts and detection rules from local JSON and YAML files. When I run the phishing alert, the rule matches, the playbook extracts the URL domain and source IP, and a local threat-intelligence list marks both as malicious. The scoring model gives 20 points for phishing and 40 per malicious indicator, so the score is 100 and the severity is critical. The playbook then simulates containment actions and saves an incident to JSON. The dashboard shows the run steps, indicators, risk, and incident details. All response actions are simulated; nothing is sent to a real firewall, mail system, or endpoint.â€
+> “I built Mini SOC-SOAR to demonstrate a small end-to-end phishing response workflow. The app loads sample alerts and detection rules from local JSON and YAML files. When I run the phishing alert, the rule matches, the playbook extracts the URL domain and source IP, and a local threat-intelligence list marks both as malicious. The scoring model gives 20 points for phishing and 40 per malicious indicator, so the score is 100 and the severity is critical. The playbook then simulates containment actions and saves an incident to JSON. The dashboard shows the run steps, indicators, risk, and incident details. All response actions are simulated; nothing is sent to a real firewall, mail system, or endpoint.”
 
 ### Demo sequence
 
@@ -182,4 +182,3 @@ It shows familiarity with the incident lifecycle, detection rules, IOC enrichmen
 ## Disclaimer
 
 This is an educational portfolio project. Threat intelligence is synthetic and incomplete. Firewall blocking, email quarantine, and SOC notification are simulated actions for demonstration purposes and do not modify real systems.
-
