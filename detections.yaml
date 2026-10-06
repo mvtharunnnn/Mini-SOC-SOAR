@@ -1,0 +1,10 @@
+rules:
+  - id: DET-001
+    name: Suspicious Phishing URL
+    type: phishing
+    severity: HIGH
+  - id: DET-002
+    name: Multiple Failed Logins
+    type: brute_force
+    severity: HIGH
+
