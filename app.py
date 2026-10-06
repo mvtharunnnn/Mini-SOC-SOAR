@@ -31,9 +31,9 @@ def match_rule(alert):
     return None
 
 
-st.set_page_config(page_title="Mini SOC-SOAR", page_icon="ðŸ›¡ï¸", layout="wide")
-st.title("ðŸ›¡ï¸ Mini SOC-SOAR")
-st.caption("Automated phishing incident response Â· Local-only demonstration")
+st.set_page_config(page_title="Mini SOC-SOAR", page_icon="🛡️", layout="wide")
+st.title("🛡️ Mini SOC-SOAR")
+st.caption("Automated phishing incident response · Local-only demonstration")
 
 alerts = load_alerts()
 incidents = get_incidents()
@@ -72,20 +72,20 @@ if last_run:
     elif last_run["kind"] == "phishing":
         result = last_run["result"]
         for step in result["steps"]:
-            st.write(f"âœ… {step}")
+            st.write(f"✅ {step}")
         rule = last_run["rule"]
-        st.caption(f"Matched {rule['id']} Â· {rule['name']} ({rule['severity']})")
-        st.info("SIMULATED RESPONSE â€” no real systems were changed.")
-        st.write(f"Risk: **{result['risk_score']} / 100 Â· {result['severity']}**")
+        st.caption(f"Matched {rule['id']} · {rule['name']} ({rule['severity']})")
+        st.info("SIMULATED RESPONSE — no real systems were changed.")
+        st.write(f"Risk: **{result['risk_score']} / 100 · {result['severity']}**")
         st.write("IOC results")
         st.dataframe(result["iocs"], width="stretch", hide_index=True)
-        st.success(f"{result['incident']['id']} created Â· {result['incident']['status']}")
+        st.success(f"{result['incident']['id']} created · {result['incident']['status']}")
     else:
         alert = last_run["alert"]
         rule = last_run["rule"]
-        st.success(f"âœ… Detection rule matched: {rule['id']} Â· {rule['name']}")
+        st.success(f"✅ Detection rule matched: {rule['id']} · {rule['name']}")
         st.write(f"Failed attempts: **{alert.get('failed_attempts')}** in {alert.get('window_minutes')} minutes.")
-        st.info("SIMULATED RESPONSE â€” login alert surfaced for analyst review; this demo playbook handles phishing incidents.")
+        st.info("SIMULATED RESPONSE — login alert surfaced for analyst review; this demo playbook handles phishing incidents.")
 
 st.header("Incident List")
 incidents = get_incidents()
@@ -101,4 +101,3 @@ else:
 
 with st.expander("Detection rules"):
     st.dataframe(load_rules(), width="stretch", hide_index=True)
-
