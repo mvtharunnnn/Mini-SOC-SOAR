@@ -1,0 +1,29 @@
+[
+  {
+    "id": "ALERT-001",
+    "type": "phishing",
+    "user": "john.doe",
+    "sender": "security@evil-login.com",
+    "subject": "Urgent Account Verification",
+    "url": "https://evil-login.com/verify",
+    "source_ip": "185.10.20.30"
+  },
+  {
+    "id": "ALERT-002",
+    "type": "phishing",
+    "user": "jane.smith",
+    "sender": "notifications@google.com",
+    "subject": "Your weekly account summary",
+    "url": "https://google.com/account",
+    "source_ip": "142.250.72.14"
+  },
+  {
+    "id": "ALERT-003",
+    "type": "brute_force",
+    "user": "alex.lee",
+    "source_ip": "203.0.113.44",
+    "failed_attempts": 12,
+    "window_minutes": 5
+  }
+]
+
